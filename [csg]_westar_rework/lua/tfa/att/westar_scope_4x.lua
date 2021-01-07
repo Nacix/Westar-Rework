@@ -4,9 +4,9 @@ end
 
 ATTACHMENT.Name = "4x Westar Scope"
 --ATTACHMENT.ID = "base" -- normally this is just your filename
-ATTACHMENT.Description = { 
-TFA.Attachments.Colors["="], "4x zoom", 
-TFA.Attachments.Colors["-"], "20% higher zoom time",  
+ATTACHMENT.Description = {
+TFA.Attachments.Colors["="], "4x zoom",
+TFA.Attachments.Colors["-"], "20% higher zoom time",
 TFA.Attachments.Colors["-"], "10% slower aimed walking" }
 ATTACHMENT.Icon = "entities/att_scope.png" --Revers to label, please give it an icon though!  This should be the path to a png, like "entities/tfa_ammo_match.png"
 ATTACHMENT.ShortName = "4x"
@@ -29,7 +29,7 @@ ATTACHMENT.WeaponTable = {
 		}
 	},
 	["Primary"] = {
-	["IronAccuracy "] = .0001, 
+	["IronAccuracy "] = .0001,
 	["KickUp"] = 0,
 },
 	["BlowbackVector"] = Vector(0.00,-0.75,0.00),
@@ -42,13 +42,13 @@ ATTACHMENT.WeaponTable = {
 	["RTScopeAttachment"] = -1,
 	["IronSightsSensitivity"] = 0.2,
 	--["ScopeReticule_Scale"] = {2.5,2.5}
-	
+
 	["Bodygroups_V"] = {
-        ["Scope"] = 0,
-    },
-    ["Bodygroups_W"] = {
-        ["Scope"] = 0,
-    }
+		["Scope"] = 0,
+	},
+	["Bodygroups_W"] = {
+		["Scope"] = 0,
+	}
 }
 
 local shadowborder = 256
@@ -84,9 +84,9 @@ function ATTACHMENT:Attach(wep)
 			local pos = att.Pos - owoff
 			ts = pos:ToScreen()
 		end
-		
+
 		if myret ~= Material( wep.ScopeVariant ) then myret = Material( wep.ScopeVariant ) end
-		
+
 		if not myshad then
 			myshad = Material( "vgui/scope_shadowmask_test")
 		end

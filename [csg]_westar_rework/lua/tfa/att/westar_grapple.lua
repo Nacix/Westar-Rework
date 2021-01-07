@@ -8,7 +8,7 @@ ATTACHMENT.ShortName = "HOOK" --Abbreviation, 5 chars or less please
 ATTACHMENT.Description = {
 	TFA.AttachmentColors["="],"A long range grappling hook",
 	TFA.AttachmentColors["+"],"Allows for quick upward travel",
-	TFA.AttachmentColors["-"],"Disables aiming while enabled", 
+	TFA.AttachmentColors["-"],"Disables aiming while enabled",
 }
 ATTACHMENT.Icon = "entities/mod_stun20_servius.png" --Revers to label, please give it an icon though!  This should be the path to a png, like "entities/tfa_ammo_match.png"
 

@@ -4,7 +4,7 @@ end
 
 ATTACHMENT.Name = "Good Time Ammo"
 ATTACHMENT.ShortName = "AHH"
-ATTACHMENT.Description = { 
+ATTACHMENT.Description = {
 	TFA.AttachmentColors["="],"That wasn't bacta",
 	TFA.AttachmentColors["+"],"You can see the future",
 	TFA.AttachmentColors["-"],"The walls are plotting against you",

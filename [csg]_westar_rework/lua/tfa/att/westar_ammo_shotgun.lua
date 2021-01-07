@@ -5,7 +5,7 @@ end
 ATTACHMENT.Name = "Burst Cells"
 ATTACHMENT.ShortName = "SHG" --Abbreviation, 5 chars or less please
 --ATTACHMENT.ID = "base" -- normally this is just your filename
-ATTACHMENT.Description = { 
+ATTACHMENT.Description = {
 TFA.AttachmentColors["="],"Overloaded shotgun charges useful for CQB.",
 TFA.AttachmentColors["+"],"High Damage",
 TFA.AttachmentColors["-"],"Low Rate of Fire",
@@ -46,13 +46,13 @@ ATTACHMENT.WeaponTable = {
 
 local mat_canister = Material( "Jellyton/Custom/Weapons/Westar_M5/M_Canister" )
 function ATTACHMENT:Attach(wep)
-	if wep.AmmoDCS then 
+	if wep.AmmoDCS then
 		wep.ScopeVariant = "#sw/visor/sw_ret_redux_white"
 		wep.VElements["laser"].active = true
 		wep.WElements["laser"].active = true
 		wep.VElements["laser"].color = Color( 255, 255, 255, 255 )
 		wep.WElements["laser"].color = Color( 255, 255, 255, 255 )
-		
+
 		wep.VElements["dotoptic"].color = Color( 150, 150, 150, 200 )
 	end
 	wep.CachedRetADCS = "#sw/visor/sw_ret_redux_white"
@@ -60,9 +60,9 @@ function ATTACHMENT:Attach(wep)
 	wep.PrecachedOptic = Color( 150, 150, 150, 200 )
 
 	wep.MuzzleFlashEffect = "rw_sw_muzzleflash_white"
-	
+
 	wep:Unload()
-	
+
 	mat_canister:SetTexture( "$detail", "Jellyton/Custom/Weapons/Westar_M5/T_WestarM5_Emissive_Grey" )
 end
 
@@ -71,17 +71,17 @@ function ATTACHMENT:Detach(wep)
 	wep.PrecachedLaser = nil
 
 	wep.MuzzleFlashEffect = "rw_sw_muzzleflash_blue"
-	
+
 	if wep.AmmoDCS then
 		wep.VElements["laser"].color = Color( 25, 25, 255, 0 )
-		wep.WElements["laser"].color = Color( 25, 25, 255, 0 )		
+		wep.WElements["laser"].color = Color( 25, 25, 255, 0 )
 		wep.ScopeVariant = "#sw/visor/sw_ret_redux_blue"
-		
+
 		wep.VElements["dotoptic"].color = Color( 0, 75, 255, 255 )
 	end
-	
+
 	wep:Unload()
-	
+
 	mat_canister:SetTexture( "$detail", "Jellyton/Custom/Weapons/Westar_M5/T_WestarM5_Emissive" )
 end
 

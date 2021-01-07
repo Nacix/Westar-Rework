@@ -12,20 +12,20 @@ GMSNX.StatusEffects = {
 				else
 					mult = 1
 				end
-				local hpam = amount*mult
+				local hpam = amount * mult
 				local hpdur = duration
-				local hptick = (amount/duration)*mult
+				local hptick = (amount / duration) * mult
 
 				local HealAmount
-				for i = 1, hpdur*hptick do
-					timer.Simple(i/hptick, function()
+				for i = 1, hpdur * hptick do
+					timer.Simple(i / hptick, function()
 						if !target:IsValid() then return end
-						local futureheal = ( hpam/hpdur )/hptick
+						local futureheal = ( hpam / hpdur ) / hptick
 
-						if (target:GetMaxHealth()*2) - target:Health() >= futureheal then
+						if (target:GetMaxHealth() * 2) - target:Health() >= futureheal then
 							HealAmount = futureheal
 						else
-							HealAmount = ((target:GetMaxHealth()*2) - target:Health())
+							HealAmount = ((target:GetMaxHealth() * 2) - target:Health())
 						end
 
 						target:SetHealth( target:Health() + HealAmount )
@@ -46,7 +46,7 @@ GMSNX.StatusEffects = {
 		["string"] = "Stun",
 		["function"] =
 			function(target, dealer, effect, duration)
-				local function RemoveFrozen(target)
+				local function RemoveFrozen( target )
 					if target:IsValid() then
 						target.SNXStatFrozen = false
 
@@ -71,9 +71,9 @@ GMSNX.StatusEffects = {
 						target.SNXStatFrozen = true
 
 						if target:IsPlayer() then
-							target:Freeze( true ) 
+							target:Freeze( true )
 						end
-						
+
 						timer.Simple( duration, function()
 							RemoveFrozen(target)
 						end )

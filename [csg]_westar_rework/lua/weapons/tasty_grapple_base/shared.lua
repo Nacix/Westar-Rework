@@ -42,10 +42,10 @@ SWEP.Base					= "tfa_gun_base"
 			if !ent:GetStat("GrappleEnabled") then return end
 			if !ent:IsValid() then return end
 			if ent:GetHoldingGrab() then
-				ent:SetObjectRange( math.max(ent:GetObjectRange()+ucmd:GetMouseWheel()*20, 0 ) )
+				ent:SetObjectRange( math.max(ent:GetObjectRange() + ucmd:GetMouseWheel() * 20, 0 ) )
 				ent:SetMWScrolling( ucmd:GetMouseWheel() )
 			end
-		end	
+		end
 	end
 
 	function SWEP.PreventHook(ent, ply, bind, press)
@@ -57,7 +57,7 @@ SWEP.Base					= "tfa_gun_base"
 				if ( string.find( bind, "invnext" ) ) then return true end
 				if ( string.find( bind, "invprev" ) ) then return true end
 			end
-		end	
+		end
 	end
 
 	function SWEP.ReleaseHook(ent, ply, key )
@@ -66,7 +66,7 @@ SWEP.Base					= "tfa_gun_base"
 			if ply:GetActiveWeapon() ~= ent then return end
 			if !ent:GetStat("GrappleEnabled") then return end
 			ent:LetGoGrapple()
-		end	
+		end
 	end
 
 	function SWEP:SecondaryAttack()
@@ -91,11 +91,11 @@ SWEP.Base					= "tfa_gun_base"
 		if tr.Hit then
 			self:SetHoldingGrab(true)
 			if !SERVER then return false end
-			
+
 			local ent = tr.Entity
 			self.RopeAnchor = ents.Create("prop_physics")
-			self.RopeAnchor:SetPos(tr.HitPos + (tr.HitNormal*5))
-			self.RopeAnchor:SetAngles(tr.HitNormal:Angle()+Angle(90,0,90))
+			self.RopeAnchor:SetPos(tr.HitPos + (tr.HitNormal * 5))
+			self.RopeAnchor:SetAngles(tr.HitNormal:Angle() + Angle(90,0,90))
 			self.RopeAnchor:SetModel("models/props_c17/TrapPropeller_Lever.mdl")
 			self.RopeAnchor:Spawn()
 			self.RopeAnchor:SetCollisionGroup(COLLISION_GROUP_IN_VEHICLE)
@@ -119,9 +119,9 @@ SWEP.Base					= "tfa_gun_base"
 			self.PlayerKF:SetCollisionGroup(COLLISION_GROUP_IN_VEHICLE)
 			self.PlayerKF:SetRenderMode(RENDERMODE_NONE)
 			self.PlayerKF:DrawShadow(false)
-			self.PlayerKF:PointAtEntity(self.Owner)
+			self.PlayerKF:PointAtEntity( self.GetOwner() )
 			self.PlayerKF:SetSolid(SOLID_NONE)
-			
+
 			local vm = ply:GetViewModel(0)
 			if ply == ply:GetViewEntity() then
 				self.PlayerKF:SetPos(vm:GetAttachment(self:GetMuzzleAttachment()).Pos)
@@ -129,7 +129,7 @@ SWEP.Base					= "tfa_gun_base"
 			else
 				local offsetVec = Vector( 5, -1, -5 )
 				local offsetAng = Angle( 180, 90, 0 )
-				
+
 				local boneid = ply:LookupBone( "ValveBiped.Bip01_R_Hand" )
 				local matrix = ply:GetBoneMatrix( boneid )
 				local newpos = LocalToWorld( offsetVec, offsetAng, matrix:GetTranslation(), matrix:GetAngles() )
@@ -143,7 +143,7 @@ SWEP.Base					= "tfa_gun_base"
 
 			self.RopeC, self.RopeCC = constraint.Rope(self.PlayerKF, self.RopeAnchor, 0, 0, Vector(0,0,0), Vector(0,5,0), self:GetObjectRange(), 0, 0, 1, "cable/cable2", true)
 			self.RopeCC:SetKeyValue( "Slack", 0 )
-	
+
 			-- Changed impact effect from cball_bounce to MetalSpark
 			local effectdata = EffectData()
 			effectdata:SetOrigin( self.RopeAnchor:GetPos() )
@@ -176,11 +176,11 @@ SWEP.Base					= "tfa_gun_base"
 		self:SetHoldingGrab(false)
 
 		self:SetObjectRange(0)
-		
+
 		if self.RopeSounds then
 			self.RopeSounds:ChangeVolume(0)
 		end
-		
+
 		if self.RopeAnchor and self.RopeAnchor:IsValid() then
 			self.RopeAnchor:Remove()
 		end
@@ -199,24 +199,24 @@ SWEP.Base					= "tfa_gun_base"
 		if !ranc or !ranc:IsValid() then return false end
 
 		local trendpos = ranc:GetPos() + (Vector(0,0,-1) * self:GetObjectRange())
-		
+
 		if self:GetCapturedEntity() and self:GetCapturedEntity():IsValid() then
 			ply = self:GetCapturedEntity()
 			ranc = self:GetOwner()
-			trendpos = ranc:GetPos() + ((ply:GetPos()-ranc:GetPos()):GetNormal() * self:GetObjectRange())
-		
+			trendpos = ranc:GetPos() + ((ply:GetPos() - ranc:GetPos()):GetNormal() * self:GetObjectRange())
+
 			if ply:Health() <= 0 then
 				self:LetGoGrapple()
 			end
 		end
 
-		local plyp = ply:GetPhysicsObject()
+		--local plyp = ply:GetPhysicsObject()
 
 		local tr = util.TraceLine({
 			start = ranc:GetPos(),
 			endpos = trendpos,
 			filter = function(ent)
-				if (ent == ent) or (ent == self.Owner) or (ent == ranc) then
+				if (ent == ent) or (ent == self.GetOwner()) or (ent == ranc) then
 					return false
 				else
 					return true
@@ -224,11 +224,11 @@ SWEP.Base					= "tfa_gun_base"
 			end
 		})
 
-		local objr = math.min(5000/(self:GetObjectRange()+10), 10)
+		local objr = math.min(5000 / (self:GetObjectRange() + 10), 10)
 
-		local objrd = math.max((self.DefaultLength - self:GetObjectRange())/200,0)
+		local objrd = math.max((self.DefaultLength - self:GetObjectRange()) / 200,0)
 
-		local dist = math.Clamp(tr.HitPos:Distance(ply:GetPos())/10, 0, 15)
+		local dist = math.Clamp(tr.HitPos:Distance(ply:GetPos()) / 10, 0, 15)
 
 		local grup
 		local grside
@@ -236,7 +236,7 @@ SWEP.Base					= "tfa_gun_base"
 		if ply:IsPlayer() then
 			if ply:OnGround() then
 				grside = objrd
-				grup = dist*3
+				grup = dist * 3
 			else
 				grup = 1
 				grside = 1
@@ -251,14 +251,14 @@ SWEP.Base					= "tfa_gun_base"
 			end
 		end
 
-		local futurvel = (tr.HitPos-ply:GetPos()):GetNormal() * (((objr + dist)/2)*grside)
-		futurvel:Add(Vector(0,0,5*(grup)))
-		futurvel:Sub( ply:GetVelocity()/(dist*25) )
-		futurvel:Sub( Vector(0,0, ply:GetVelocity().z/(objr*25) ) )
+		local futurvel = (tr.HitPos-ply:GetPos()):GetNormal() * (((objr + dist) / 2) * grside)
+		futurvel:Add(Vector(0,0,5 * grup))
+		futurvel:Sub( ply:GetVelocity() / (dist * 25) )
+		futurvel:Sub( Vector(0,0, ply:GetVelocity().z / (objr * 25) ) )
 
 		ply:SetVelocity( futurvel )
 
-		self.RopeCC:SetKeyValue( "length", self:GetObjectRange()+50 )
+		self.RopeCC:SetKeyValue( "length", self:GetObjectRange() + 50 )
 	end
 
 	function SWEP:Think()
@@ -267,7 +267,7 @@ SWEP.Base					= "tfa_gun_base"
 		if self.RopeSounds and self:GetObjectRange() ~= 0 then
 			self.RopeSounds:ChangeVolume(math.abs(self:GetMWScrolling()), 0.4 and self:GetMWScrolling() > 0.5 or 0.1)
 		end
-		
+
 		if self:GetStat("GrappleEnabled") then
 			self:GrappleThink()
 		end

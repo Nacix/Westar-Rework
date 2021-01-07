@@ -5,7 +5,7 @@ end
 ATTACHMENT.Name = "Apache Rockets"
 ATTACHMENT.ShortName = "ARP" --Abbreviation, 5 chars or less please
 --ATTACHMENT.ID = "base" -- normally this is just your filename
-ATTACHMENT.Description = { 
+ATTACHMENT.Description = {
 	TFA.AttachmentColors["="],"Perfect for African Village raids",
 	TFA.AttachmentColors["+"],"brrt",
 	TFA.AttachmentColors["-"],"say bye bye to staff",

@@ -6,7 +6,7 @@ end
 
 ATTACHMENT.Name = "Green Laser"
 ATTACHMENT.ShortName = "GREEN" -- EDIT: Changed from L to LASER
-ATTACHMENT.Description = { 
+ATTACHMENT.Description = {
 	TFA.AttachmentColors["+"],"Adds a cool but useless laser",
 }
 ATTACHMENT.Icon = "entities/laser_green.png"
@@ -26,7 +26,7 @@ ATTACHMENT.WeaponTable = {
 
 function ATTACHMENT:Attach(wep)
 	if wep.LaserDCS then
-		wep.ScopeVariant = "#sw/visor/sw_ret_redux_green" 
+		wep.ScopeVariant = "#sw/visor/sw_ret_redux_green"
 		wep.CachedRetLDCS = "#sw/visor/sw_ret_redux_green"
 
 		wep.VElements["dotoptic"].color = Color( 0, 255, 50, 255 )

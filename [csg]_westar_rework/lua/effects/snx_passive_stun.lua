@@ -6,7 +6,7 @@ function EFFECT:Init( data )
 	self.Entity = data:GetEntity()
 	self.FollowPlayer = self.Entity:GetPos()
 
-	self.Duration = data:GetScale()*6
+	self.Duration = data:GetScale() * 6
 	self.HealingAm = 0
 
 	self.Alpha = 255
@@ -18,23 +18,23 @@ end
 function EFFECT:Think()
 	if !self.Entity:IsValid() then return end
 
-	self.FollowPlayer = self.Entity:GetPos()+Vector(0,0,50)
+	self.FollowPlayer = self.Entity:GetPos() + Vector(0,0,50)
 
 	self.Life = self.Life + FrameTime() * 6
 
 	self.Alpha = 255 * ( 1 - self.Life )
 
-	return ( self.Life < self.Duration )
+	return self.Life < self.Duration
 end
 
 function EFFECT:Render()
 	-- Particles
 
 	render.SetMaterial( self.SprMat )
-	render.DrawSprite( 
+	render.DrawSprite(
 		self.FollowPlayer,
-		math.min(self.Life*50,100)+math.random( -25, 25 ),
-		math.min(self.Life*50,100)+math.random( -25, 25 ),
+		math.min(self.Life * 50,100) + math.random( -25, 25 ),
+		math.min(self.Life * 50,100) + math.random( -25, 25 ),
 		self.Color
 	)
 
@@ -42,9 +42,9 @@ function EFFECT:Render()
 	for i = 1, 5 do
 		local randvec = VectorRand()
 		randvec.z = -2
-		render.DrawBeam( 
-			self.FollowPlayer + (VectorRand()*5),
-			self.FollowPlayer + (randvec*(math.min(self.Life*5,50)+math.random( -15, 45 ))),
+		render.DrawBeam (
+			self.FollowPlayer + (VectorRand() * 5),
+			self.FollowPlayer + (randvec * (math.min(self.Life * 5,50) + math.random( -15, 45 ))),
 			math.random(8,14),
 			5,
 			3,

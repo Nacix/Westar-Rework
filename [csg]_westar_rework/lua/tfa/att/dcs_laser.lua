@@ -4,18 +4,18 @@ end
 
 ATTACHMENT.Name = "Dynamic Color System (LASER)"
 ATTACHMENT.ShortName = "DCS-L" -- EDIT: Changed from L to LASER
-ATTACHMENT.Description = { 
+ATTACHMENT.Description = {
 	TFA.AttachmentColors["+"],"Syncs the color of your optics to the color of your laser",
 }
 ATTACHMENT.Icon = "entities/mod_stun20_servius.png"
 
 function ATTACHMENT:Attach(wep)
 	wep.LaserDCS = true
-	
-	if wep.CachedRetLDCS ~= nil then 
+
+	if wep.CachedRetLDCS ~= nil then
 		wep.ScopeVariant = wep.CachedRetLDCS
 	end
-	
+
 	if wep.PrecachedOpticLCDS ~= nil then
 		wep.VElements["dotoptic"].color = wep.PrecachedOpticLCDS
 	end

@@ -6,7 +6,7 @@ end
 
 ATTACHMENT.Name = "White Laser"
 ATTACHMENT.ShortName = "WHITE" -- EDIT: Changed from L to LASER
-ATTACHMENT.Description = { 
+ATTACHMENT.Description = {
 	TFA.AttachmentColors["+"],"Adds a cool but useless laser",
 }
 ATTACHMENT.Icon = "entities/laser_white.png"
@@ -28,10 +28,10 @@ function ATTACHMENT:Attach(wep)
 	if wep.LaserDCS then
 		wep.ScopeVariant = "#sw/visor/sw_ret_redux_white"
 		wep.CachedRetLDCS = "#sw/visor/sw_ret_redux_white"
-		
+
 		wep.VElements["dotoptic"].color = Color( 150, 150, 150, 200 )
 	else wep.CachedRetLDCS = "#sw/visor/sw_ret_redux_white" wep.PrecachedOpticLCDS = Color( 150, 150, 150, 200 ) end
-	
+
 	wep.VElements["laser"].color = Color( 255, 255, 255, 255 )
 	wep.WElements["laser"].color = Color( 255, 255, 255, 255 )
 end
@@ -39,10 +39,10 @@ end
 function ATTACHMENT:Detach(wep)
 	wep.ScopeVariant = "#sw/visor/sw_ret_redux_blue"
 	wep.CachedRetLDCS = nil
-	
+
 	wep.VElements["laser"].color = Color( 0, 0, 0, 0 )
 	wep.WElements["laser"].color = Color( 0, 0, 0, 0 )
-	
+
 	wep.VElements["dotoptic"].color = wep.SystemColor
 end
 

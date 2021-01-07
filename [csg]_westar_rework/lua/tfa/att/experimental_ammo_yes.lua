@@ -5,7 +5,7 @@ end
 ATTACHMENT.Name = "How did we get here?"
 ATTACHMENT.ShortName = "huh" --Abbreviation, 5 chars or less please
 --ATTACHMENT.ID = "base" -- normally this is just your filename
-ATTACHMENT.Description = { 
+ATTACHMENT.Description = {
 	TFA.AttachmentColors["="],"holy dog shit",
 	TFA.AttachmentColors["+"],"it shoots",
 	TFA.AttachmentColors["-"],"300% Reduction to Framerate",
