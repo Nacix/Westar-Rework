@@ -4,6 +4,7 @@ if (GetConVar(SWEP.Gun .. "_allowed")) != nil and not (GetConVar(SWEP.Gun .. "_a
 	SWEP.PrintName = SWEP.Gun
 return end
 
+-- Stuff
 SWEP.Base							= "tasty_grapple_base"
 SWEP.Category						= "Other"
 SWEP.Manufacturer 					= "im gonna shit yourself"
