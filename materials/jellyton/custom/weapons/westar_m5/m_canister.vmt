@@ -1,0 +1,23 @@
+"VertexLitGeneric"
+{
+	$basetexture "Jellyton\Custom\Weapons\Westar_M5\T_WestarM5_Color"
+	$bumpmap "Jellyton\Custom\Weapons\Westar_M5\T_WestarM5_Normal"
+    $phongexponenttexture "Jellyton\Custom\Weapons\Westar_M5\T_WestarM5_Exponent"
+
+    $detail "Jellyton\Custom\Weapons\Westar_M5\T_WestarM5_Emissive"
+	$detailblendmode 5
+	$detailscale 1
+	$detailblendfactor 4
+
+    $phong 				1
+    $phongboost			15
+    $phongalbedotint    1
+    $phongfresnelranges		"[1 5 22.5]"
+
+    $envmap				"Jellyton\Custom\Weapons\Westar_M5\cubemaps\brushed_silver.hdr"
+    $envmaptint				"[ 0.08 0.08 0.08 ]"
+    $envmapfresnel			 0.1
+    $basemapalphaenvmapmask 1
+
+    $nocull 1
+}
