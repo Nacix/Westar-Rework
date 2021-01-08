@@ -5,7 +5,7 @@ if (GetConVar(SWEP.Gun .. "_allowed")) != nil and not (GetConVar(SWEP.Gun .. "_a
 return end
 
 -- Stuff
-SWEP.Base							= "tasty_grapple_base"
+SWEP.Base							= "tfa_gun_base"
 SWEP.Category						= "Other"
 SWEP.Manufacturer 					= "im gonna shit yourself"
 SWEP.Author							= "Nagol"
@@ -196,7 +196,7 @@ SWEP.WElements = {
 
 SWEP.Attachments = {
 	[1] = { offset = { 0, 0 }, atts = { "experimental_laser" }, order = 1 },
-	[2] = { offset = { 0, 0 }, atts = { "experimental_scope_hahahha", "westar_grapple" }, order = 2 },
+	[2] = { offset = { 0, 0 }, atts = { "experimental_scope_hahahha" }, order = 2 },
 	[3] = { offset = { 0, 0 }, atts = { "experimental_ammo_what", "experimental_ammo_explosive", "experimental_ammo_yes" }, order = 3 }, -- EDIT: Added new attachments and implemented scrapped content
 }
 
